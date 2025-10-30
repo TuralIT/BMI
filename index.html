@@ -105,12 +105,13 @@
             </form>
 
             <!-- Result Display -->
-            <div id="result-display" class="mt-8 text-center" style="display: none;">
-                <p class="text-gray-600 text-lg">Your BMI is</p>
-                <p id="bmi-value" class="text-5xl font-bold my-2"></p>
-                <p id="bmi-category" class="text-xl font-semibold px-4 py-2 rounded-full inline-block"></p>
-            </div>
-
+        </div>
+        <div id="result-display" class="mt-8 text-center w-full max-w-lg bg-white p-8 md:p-10 rounded-2xl shadow-2xl ml-6 md:ml-12" style="display: none;">
+            <p class="text-gray-600 text-lg">Your BMI is</p>
+            <p id="bmi-value" class="text-5xl font-bold my-2"></p>
+            <p id="bmi-category" class="text-xl font-semibold px-4 py-2 rounded-full inline-block"></p>
+            <img src="" alt="WeightImages" id="image">
+            <p class="text-gray-600 mt-2" style="font-size: 16px;"><label style="color: darkred;">⚠︎Disclaimer:</label> BMI is a general screening tool and not a diagnostic measure. It doesn't account for individual factors like muscle mass, fat distribution, or ethnicity. Please consult a healthcare professional for a personal health assessment.</p>
         </div>
     </div>
     <script src="index.js"></script>

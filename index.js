@@ -39,6 +39,7 @@ const clear = document.getElementById("clear-btn")
 // Calculate BMI
 let bmiValueElement = document.getElementById("bmi-value");
 let bmiCategoryElement = document.getElementById("bmi-category");
+let image = document.getElementById("image")
 
 calculate.addEventListener("click", () => {
     if (metric.classList.contains("active")) {
@@ -66,15 +67,19 @@ calculate.addEventListener("click", () => {
             // checks categories
             if (bmi < 18.5){
                 bmiCategoryElement.innerText = "Underweight"; 
+                image.src = "UnderWeight.png"
             }
             else if(bmi < 25){
                 bmiCategoryElement.innerText = "Normal"; 
+                image.src = "NormalWeight.png"
             }
             else if(bmi < 30){
                 bmiCategoryElement.innerText = "Overweight"; 
+                image.src = "overweighted.png"
             }
             else{
                 bmiCategoryElement.innerText = "Obesity";
+                image.src = "Obesity.png"
             }
             resultDisplay.style.display = "block";
         }
@@ -108,16 +113,20 @@ calculate.addEventListener("click", () => {
             bmiValueElement.innerText = `${bmi}`; 
             
             if (bmi < 18.5){
-            bmiCategoryElement.innerText = "Underweight"; 
+            bmiCategoryElement.innerText = "Underweight";
+            image.src = "UnderWeight.png"
             }
             else if(bmi < 25){
-            bmiCategoryElement.innerText = "Normal"; 
+            bmiCategoryElement.innerText = "Normal";
+            image.src = "NormalWeight.png"
             }
             else if(bmi < 30){
-            bmiCategoryElement.innerText = "Overweight"; 
+            bmiCategoryElement.innerText = "Overweight";
+            image.src = "overweighted.png"
             }
             else{
             bmiCategoryElement.innerText = "Obesity";
+            image.src = "Obesity.png"
             }
             resultDisplay.style.display = "block";
         }
