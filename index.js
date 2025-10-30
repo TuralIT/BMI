@@ -45,14 +45,14 @@ calculate.addEventListener("click", () => {
     if (metric.classList.contains("active")) {
         let weight = document.getElementById("metric-weight");
         let height = document.getElementById("metric-height");
-        if (weight.value == false || weight.value == "0"){
+        if (weight.value == false || weight.value <= "0"){
             weight.style.borderColor = "red";
             errorMesage.style.display = "block";
         }
         else{
             weight.style.borderColor = "gray";
         }
-        if (height.value == false || height.value == "0"){
+        if (height.value == false || height.value <= "0"){
             height.style.borderColor = "red";
             errorMesage.style.display = "block";
         }
@@ -89,14 +89,14 @@ calculate.addEventListener("click", () => {
         let inches = document.getElementById("imperial-height-in");
         let pounds = document.getElementById("imperial-weight");
 
-        if (pounds.value == false || pounds.value == "0"){
+        if (pounds.value == false || pounds.value <= "0"){
             pounds.style.borderColor = "red";
             errorMesage.style.display = "block";
         }
         else{
             pounds.style.borderColor = "gray";
         }
-        if (feet.value == false || inches.value == false || (feet.value == "0" && inches.value == "0")){
+        if (feet.value == false || inches.value == false || (feet.value <= "0" && inches.value <= "0")){
             feet.style.borderColor = "red";
             inches.style.borderColor = "red";
             errorMesage.style.display = "block";
@@ -139,5 +139,11 @@ clear.addEventListener("click", () => {
     document.getElementById("imperial-height-ft").value = "";
     document.getElementById("imperial-height-in").value = "";
     document.getElementById("imperial-weight").value = "";
+    document.getElementById("metric-weight").style.borderColor = "gray";
+    document.getElementById("metric-height").style.borderColor = "gray";
+    document.getElementById("imperial-height-ft").style.borderColor = "gray";
+    document.getElementById("imperial-height-in").style.borderColor = "gray";
+    document.getElementById("imperial-weight").style.borderColor = "gray";
+    errorMesage.style.display = "none";
     resultDisplay.style.display = "none";
 });
