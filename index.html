@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional BMI Calculator</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Apply Inter font as the default */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom styles for a smoother unit toggle */
+        .unit-toggle-label {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            border: 1px solid #D1D5DB; /* border-gray-300 */
+        }
+        
+        .unit-toggle-label.active {
+            background-color: #4F46E5; /* bg-indigo-600 */
+            color: white;
+            border-color: #4F46E5; /* border-indigo-600 */
+        }
+        
+        .unit-toggle-label:not(.active):hover {
+            background-color: #F3F4F6; /* bg-gray-100 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex items-center justify-center min-h-screen py-12 px-4">
+        
+        <div class="w-full max-w-lg bg-white p-8 md:p-10 rounded-2xl shadow-2xl">
+            
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800">BMI Calculator</h1>
+                <p class="text-gray-600 mt-2">Calculate your Body Mass Index</p>
+            </div>
+
+            <!-- Unit Toggle -->
+            <div class="mb-6">
+                <div id="unit-toggle" class="flex rounded-lg overflow-hidden w-full">
+                    <div id="metric-btn" class="unit-toggle-label active text-center w-1/2 py-3 px-4 font-semibold text-sm rounded-l-lg">
+                        Metric (kg, cm)
+                    </div>
+                    <div id="imperial-btn" class="unit-toggle-label text-center w-1/2 py-3 px-4 font-semibold text-sm rounded-r-lg">
+                        Imperial (lbs, ft, in)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="bmi-form" onsubmit="return false;">
+                
+                <!-- Metric Inputs -->
+                <div id="metric-inputs">
+                    <div class="mb-5">
+                        <label for="metric-height" class="block text-sm font-medium text-gray-700 mb-2">Height (cm)</label>
+                        <input type="number" id="metric-height" placeholder="e.g., 170" class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
+                    </div>
+                    <div class="mb-5">
+                        <label for="metric-weight" class="block text-sm font-medium text-gray-700 mb-2">Weight (kg)</label>
+                        <input type="number" id="metric-weight" placeholder="e.g., 65" class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
+                    </div>
+                </div>
+
+                <!-- Imperial Inputs -->
+                <div id="imperial-inputs" class="hidden">
+                    <div class="mb-5">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Height</label>
+                        <div class="flex space-x-3">
+                            <input type="number" id="imperial-height-ft" placeholder="Feet" class="w-1/2 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
+                            <input type="number" id="imperial-height-in" placeholder="Inches" class="w-1/2 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
+                        </div>
+                    </div>
+                    <div class="mb-5">
+                        <label for="imperial-weight" class="block text-sm font-medium text-gray-700 mb-2">Weight (lbs)</label>
+                        <input type="number" id="imperial-weight" placeholder="e.g., 150" class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
+                    </div>
+                </div>
+
+                <!-- Error Message Display -->
+                <div id="error-message" class="text-red-600 text-sm text-center mb-4 font-medium" style="display: none;">Type correctly</div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button id="calculate-btn" type="button" class="w-full sm:w-2/3 py-3 px-4 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-75 transition duration-200">
+                        Calculate
+                    </button>
+                    <button id="clear-btn" type="button" class="w-full sm:w-1/3 py-3 px-4 bg-gray-200 text-gray-700 font-semibold rounded-lg shadow-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75 transition duration-200">
+                        Clear
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Result Display -->
+            <div id="result-display" class="mt-8 text-center" style="display: none;">
+                <p class="text-gray-600 text-lg">Your BMI is</p>
+                <p id="bmi-value" class="text-5xl font-bold my-2"></p>
+                <p id="bmi-category" class="text-xl font-semibold px-4 py-2 rounded-full inline-block"></p>
+            </div>
+
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
